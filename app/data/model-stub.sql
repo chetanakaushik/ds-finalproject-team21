@@ -28,3 +28,17 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 
   insert into Turbine values (4,"SF9.06","An optimum choice for solar power generation, this series of collectors operates at the cutting edge of efficiency.",82,29,42000
   );
+
+  create table SensorsDeployed (sensorDeployedID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  sensorId INT NOT NULL, turbineDeployedId INT NOT NULL,serialNumber varchar (100),deployedDate varchar(50),
+  FOREIGN KEY sensorId REFERENCES Sensors(sensorId), FOREIGN KEY sensorId REFERENCES Sensors(sensorId) );
+
+  create table Site (siteId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,clientId INT,
+    siteName varchar(50),siteDescription varchar(100),
+    primaryContact varchar(100),capacity INT NOT NULL,
+    commercialDate varchar (100),addrLine1 varchar (100),addrLine2 varchar (100),
+    addrCity varchar (100),addrState varchar (100),
+    addrZip varchar (100),addrCountry varchar (100),
+    CONSTRAINT FK_SiteClient FOREIGN KEY (siteId)
+      REFERENCES Client(clientID)
+  );
