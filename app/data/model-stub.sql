@@ -14,3 +14,17 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   insert into Client values (2,"Pacific Tidal Energy","Pacfici Tidal Energy makes life better for millions of people every day by providing sustainable tidal energy generation services – affordable, reliable and clean. Pacific Tidal is the largest tidal electric power holding company in the United States, supplying and delivering energy through local utilities to approximately 7.4 million U.S. customers.","Energy","Energy Service","Charlotte, NC"
 
   );
+
+  insert into Sensors values (
+  3,"BN350300","Dynamic Pressure Sensor","Bently Nevada",10000
+  );
+
+  insert into Turbine values (1,"3SA.01","The 3SA high efficiency, deep-water tidal turbine is an industry leader among S-class offerings.",429,12,32000
+  );
+
+  insert into Turbine values (
+  2,"3SA.02","The 3SA high efficiency, deep-water tidal turbine is an industry leader among H-class offerings.",519,12,32000
+  );
+
+  insert into Turbine values (4,"SF9.06","An optimum choice for solar power generation, this series of collectors operates at the cutting edge of efficiency.",82,29,42000
+  );
