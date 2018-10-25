@@ -42,3 +42,25 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     CONSTRAINT FK_SiteClient FOREIGN KEY (siteId)
       REFERENCES Client(clientID)
   );
+
+  insert into Site values (
+3,2,"King County Farm",
+"The 520-megawatt King County Wind Farm consists of five
+fields of wind turbine units, and is part of the Tesla Energy
+Complex near Saphire Lake, Iowa.
+The plant began operation in 2000 with an addition in 2009.","Jean X",
+863,"2000-01-01","807 Green Field Rd",NULL,"Titonka","IA","50480","US"
+);
+
+create table TurbineDeployed(turbineDeployedId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,turbineId INT NOT NULL,siteId INT NOT NULL,serialNumber varchar(50),
+    deployedDate varchar(50),
+    totalFiredHours INT NOT NULL,totalStarts INT NOT NULL,
+    lastPlannedOutageDate varchar(40),lastUnplannedOutageDate varchar(40),
+    CONSTRAINT FK_TurbineDep1 FOREIGN KEY (turbineId)
+      REFERENCES Turbine(turbineId),
+      CONSTRAINT FK_TurbineDep2 FOREIGN KEY (siteId)
+        REFERENCES Site(siteId));
+
+insert into TurbineDeployed values
+  (3,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
+);
