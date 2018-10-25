@@ -1,8 +1,11 @@
+
+
 nav{
   background-color: #003333;
     border: 2px solid black;
     padding: 5px;
 }
+
 footer{
     background-color: #003333;
     color: white;font-family;
@@ -11,6 +14,7 @@ footer{
     font-size: 15px;
 
 }
+
 body{
     font-family: sans-serif;
 }
@@ -37,3 +41,7 @@ h1{
 header, nav, main, footer{
     margin:10px;
 }
+
+/*
+  Adjust the CSS as needed for professional look
+*/
