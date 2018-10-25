@@ -1,5 +1,6 @@
 <?php
- require '../../app/common.php';
+phpinfo();
+ /*require '../../app/common.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require 'turbinePost.php';
