@@ -67,5 +67,5 @@ create table TurbineDeployed(turbineDeployedId INT PRIMARY KEY AUTO_INCREMENT NO
         REFERENCES Site(siteId));
 
 insert into TurbineDeployed values
-  (3,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
+  (1,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
 );
