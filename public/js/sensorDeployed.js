@@ -1,22 +1,22 @@
-var app2 = new Vue({
+var app5 = new Vue({
 
-el: '#app2',
+el: '#app5',
 data: {
-  sensor : [
+  sensorDeployed : [
 
   ],
-  sensorForm: { },
+  sensorDeployedForm: { },
 },
 
  methods: {
 
-   handleSensorForm : function(e) {
+   handleSensorDeployedForm : function(e) {
 
-     const s = JSON.stringify(this.sensorForm);
+     const s = JSON.stringify(this.sensorDeployedForm);
      console.log(s);
 
      // POST to remote server
-    fetch('api/sensor.php', {
+    fetch('api/sensorDeployed.php', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -25,21 +25,21 @@ data: {
     })
   .then(function (response) {return response.json();})
     .then(function (json){
-      json = app2.sensor.push(json);
+      json = app5.sensorDeployed.push(json);
       console.log(json);
     })
     .catch( function(err)  {
-      console.error('SENSOR POST ERROR:');
+      console.error('SENSOR DEPLOYED POST ERROR:');
       console.error(err);
     });
 
     // Reset workForm
-    this.sensorForm = this.getEmptyForm();
+    this.sensorDeployedForm = this.getEmptyForm();
    },
 
    getEmptyForm : function(){
      return {
-       sensor: null,
+       sensorDeployed: null,
      };
    },
 
@@ -47,13 +47,13 @@ data: {
 
 
 created : function() {
-  fetch('api/sensor.php')
+  fetch('api/sensorDeployed.php')
   .then(function (response) {return response.json();})
   .then(function (json){
-    app2.sensor = json;
+    app5.sensorDeployed = json;
      console.log(json);})
   .catch( function(err) {
-    console.log('SENSOR LIST ERROR:');
+    console.log('SENSOR DEPLOYED LIST ERROR:');
     console.log(err);
   });
 }

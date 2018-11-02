@@ -1,22 +1,22 @@
-var app2 = new Vue({
+var app3 = new Vue({
 
-el: '#app2',
+el: '#app3',
 data: {
-  sensor : [
+  site : [
 
   ],
-  sensorForm: { },
+  siteForm: { },
 },
 
  methods: {
 
-   handleSensorForm : function(e) {
+   handleSiteForm : function(e) {
 
-     const s = JSON.stringify(this.sensorForm);
+     const s = JSON.stringify(this.siteForm);
      console.log(s);
 
      // POST to remote server
-    fetch('api/sensor.php', {
+    fetch('api/site.php', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -25,21 +25,21 @@ data: {
     })
   .then(function (response) {return response.json();})
     .then(function (json){
-      json = app2.sensor.push(json);
+      json = app3.site.push(json);
       console.log(json);
     })
     .catch( function(err)  {
-      console.error('SENSOR POST ERROR:');
+      console.error('SITE POST ERROR:');
       console.error(err);
     });
 
     // Reset workForm
-    this.sensorForm = this.getEmptyForm();
+    this.siteForm = this.getEmptyForm();
    },
 
    getEmptyForm : function(){
      return {
-       sensor: null,
+       site: null,
      };
    },
 
@@ -47,13 +47,13 @@ data: {
 
 
 created : function() {
-  fetch('api/sensor.php')
+  fetch('api/site.php')
   .then(function (response) {return response.json();})
   .then(function (json){
-    app2.sensor = json;
+    app3.site = json;
      console.log(json);})
   .catch( function(err) {
-    console.log('SENSOR LIST ERROR:');
+    console.log('SITE LIST ERROR:');
     console.log(err);
   });
 }

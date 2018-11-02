@@ -4,7 +4,8 @@ gicsSubIndustry varchar(100) NOT NULL, headquarters varchar(100) NOT NULL);
 
 create table Sensors (sensorId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   sensorName varchar(50) NOT NULL,
-  sensorDescription varchar(400) NOT NULL,manufacturer varchar(400) NOT NULL ,totalLifeExpentancyHours INT NOT NULL);
+  sensorDescription varchar(400) NOT NULL,manufacturer varchar(400) NOT NULL
+   ,totalLifeExpentancyHours INT NOT NULL);
 
 create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   turbineName varchar(50) NOT NULL,
@@ -30,8 +31,12 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   );
 
   create table SensorsDeployed (sensorDeployedID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  sensorId INT NOT NULL, turbineDeployedId INT NOT NULL,serialNumber varchar (100),deployedDate varchar(50),
-  FOREIGN KEY sensorId REFERENCES Sensors(sensorId), FOREIGN KEY sensorId REFERENCES Sensors(sensorId) );
+sensorId INT NOT NULL, turbineDeployedId INT NOT NULL,serialNumber varchar (100),deployedDate varchar(50),
+CONSTRAINT FK_SensorDep1 FOREIGN KEY (sensorId)
+  REFERENCES Sensors(sensorId),
+  CONSTRAINT FK_SensorDep2 FOREIGN KEY (turbineDeployedId)
+    REFERENCES TurbineDeployed(turbineDeployedId));
+
 
   create table Site (siteId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,clientId INT,
     siteName varchar(50),siteDescription varchar(100),
@@ -39,7 +44,7 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     commercialDate varchar (100),addrLine1 varchar (100),addrLine2 varchar (100),
     addrCity varchar (100),addrState varchar (100),
     addrZip varchar (100),addrCountry varchar (100),
-    CONSTRAINT FK_SiteClient FOREIGN KEY (siteId)
+    CONSTRAINT FK_SiteClient FOREIGN KEY (clientId)
       REFERENCES Client(clientID)
   );
 
@@ -62,5 +67,5 @@ create table TurbineDeployed(turbineDeployedId INT PRIMARY KEY AUTO_INCREMENT NO
         REFERENCES Site(siteId));
 
 insert into TurbineDeployed values
-  (3,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
+  (1,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
 );

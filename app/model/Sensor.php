@@ -32,9 +32,6 @@ class Sensor{
     return $arr;
   }
 
-<<<<<<< HEAD
-
-=======
   public function create() {
   $db = new PDO(DB_SERVER, DB_USER, DB_PW);
   $sql = 'INSERT INTO Sensors (sensorName, sensorDescription, manufacturer, totalLifeExpectancyHours)
@@ -48,5 +45,5 @@ class Sensor{
   ]);
   $this->sensorId = $db->lastInsertId();
 }
->>>>>>> a6c19fd44f9bf756edf5e888e0e6ecba2f208c6f
+
 }
