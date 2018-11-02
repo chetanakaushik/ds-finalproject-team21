@@ -1,4 +1,4 @@
-
+//try
 create table Client (clientID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 clientName varchar(50) NOT NULL, clientDesc varchar(400) NOT NULL, gicsSector varchar(50) NOT NULL,
 gicsSubIndustry varchar(100) NOT NULL, headquarters varchar(100) NOT NULL);
