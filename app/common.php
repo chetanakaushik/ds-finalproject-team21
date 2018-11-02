@@ -18,3 +18,5 @@ require 'model/Turbine.php';
 require 'model/Site.php';
 require 'model/TurbineDeployed.php';
 require 'model/SensorDeployed.php';
+require 'model/ClientNotes.php';
+require 'model/SensorTimeSeries.php';

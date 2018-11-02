@@ -5,8 +5,7 @@ gicsSubIndustry varchar(100) NOT NULL, headquarters varchar(100) NOT NULL);
 
 create table Sensors (sensorId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   sensorName varchar(50) NOT NULL,
-  sensorDescription varchar(400) NOT NULL,manufacturer varchar(400) NOT NULL
-   ,totalLifeExpentancyHours INT NOT NULL);
+  sensorDescription varchar(400) NOT NULL,manufacturer varchar(400) NOT NULL ,totalLifeExpentancyHours INT NOT NULL);
 
 create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   turbineName varchar(50) NOT NULL,
@@ -18,38 +17,40 @@ create table Turbine (turbineId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   );
 
   insert into Sensors values (
-  3,"BN350300","Dynamic Pressure Sensor","Bently Nevada",10000
-  );
+3,"BN350300","Dynamic Pressure Sensor","Bently Nevada",10000
+);
 
-  insert into Turbine values (1,"3SA.01","The 3SA high efficiency, deep-water tidal turbine is an industry leader among S-class offerings.",429,12,32000
-  );
+insert into Turbine values (1,"3SA.01","The 3SA high efficiency, deep-water tidal turbine is an industry leader among S-class offerings.",429,12,32000
+);
 
-  insert into Turbine values (
-  2,"3SA.02","The 3SA high efficiency, deep-water tidal turbine is an industry leader among H-class offerings.",519,12,32000
-  );
+insert into Turbine values (
+2,"3SA.02","The 3SA high efficiency, deep-water tidal turbine is an industry leader among H-class offerings.",519,12,32000
+);
 
-  insert into Turbine values (4,"SF9.06","An optimum choice for solar power generation, this series of collectors operates at the cutting edge of efficiency.",82,29,42000
-  );
+insert into Turbine values (4,"SF9.06","An optimum choice for solar power generation, this series of collectors operates at the cutting edge of efficiency.",82,29,42000
+);
 
-  create table SensorsDeployed (sensorDeployedID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+
+create table SensorsDeployed (sensorDeployedID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 sensorId INT NOT NULL, turbineDeployedId INT NOT NULL,serialNumber varchar (100),deployedDate varchar(50),
 CONSTRAINT FK_SensorDep1 FOREIGN KEY (sensorId)
   REFERENCES Sensors(sensorId),
   CONSTRAINT FK_SensorDep2 FOREIGN KEY (turbineDeployedId)
-    REFERENCES TurbineDeployed(turbineDeployedId));
+    REFERENCES TurbineDeployed(turbineDeployedId), );
 
 
-  create table Site (siteId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,clientId INT,
-    siteName varchar(50),siteDescription varchar(100),
-    primaryContact varchar(100),capacity INT NOT NULL,
-    commercialDate varchar (100),addrLine1 varchar (100),addrLine2 varchar (100),
-    addrCity varchar (100),addrState varchar (100),
-    addrZip varchar (100),addrCountry varchar (100),
-    CONSTRAINT FK_SiteClient FOREIGN KEY (clientId)
-      REFERENCES Client(clientID)
-  );
 
-  insert into Site values (
+create table Site (siteId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,clientId INT,
+  siteName varchar(50),siteDescription varchar(100),
+  primaryContact varchar(100),capacity INT NOT NULL,
+  commercialDate varchar (100),addrLine1 varchar (100),addrLine2 varchar (100),
+  addrCity varchar (100),addrState varchar (100),
+  addrZip varchar (100),addrCountry varchar (100),
+  CONSTRAINT FK_SiteClient FOREIGN KEY (siteId)
+    REFERENCES Client(clientID)
+);
+
+insert into Site values (
 3,2,"King County Farm",
 "The 520-megawatt King County Wind Farm consists of five
 fields of wind turbine units, and is part of the Tesla Energy
@@ -67,6 +68,30 @@ create table TurbineDeployed(turbineDeployedId INT PRIMARY KEY AUTO_INCREMENT NO
       CONSTRAINT FK_TurbineDep2 FOREIGN KEY (siteId)
         REFERENCES Site(siteId));
 
+create table SensorDeployed (sensorDeployedId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  sensorId INT NOT NULL,turbineDeployedId INT NOT NULL,
+  serialNumber varchar(50),deployedDate varchar(50),
+  CONSTRAINT FK_SensorDep1 FOREIGN KEY (sensorId)
+    REFERENCES Sensor(turbineId));
+
 insert into TurbineDeployed values
-  (1,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
+  (3,4,3,"9F-06-IU0021","2000-02-16",123543,119,"2016-06-01","2015-04-13"
 );
+
+insert into SensorsDeployed values (4,3,1,"BN350300-IU0001","2016-02-14");
+
+  create table ClientNotes(notesId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    clientId int not null, noteTitle varchar(100) NOT NULL, noteContent varchar(1000),
+    createdDate varchar(100),
+      CONSTRAINT FK_note1 FOREIGN KEY (clientId)
+        REFERENCES Client(clientID));
+insert into ClientNotes values (1, 1, "SLA agreement", "This is the first note for Hoosier Energy",
+"2018/09/29");
+
+create Table sensorTimeSeries (timeSeriesId INT PRIMARY KEY AUTO_INCREMENT NOT NULL, sensorDeployedId int not null ,
+  dataCollectedDate date,output float(14, 10) not null,heatRate float(14, 10) not null,
+  compressorEfficiency float(14, 10) not null,availability float(14, 10) not null,
+  reliability float(14, 10) not null,firedHours float(14, 10) not null,
+  trips int not null,starts int not null,
+  CONSTRAINT FK_time1 FOREIGN KEY (sensorDeployedId)
+    REFERENCES SensorsDeployed(sensorDeployedId));
