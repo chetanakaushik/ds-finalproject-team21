@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AGS - Login</title>
+    <link rel="stylesheet" href = "css/alternative-main.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<div class = "container" id = "app4">
+  <nav class=" row sticky-top navbar navbar-expand-lg navbar-dark">
+    <img src="img/Small Gas Logo.png" alt = "Logo" height="60px"><br />
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto" id="navLink">
+
+        <li class="nav-item ">
+          <a class="nav-link" href="client_overview.html">Client Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="site_all.html">Sites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="turbine_all.html">Turbine Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sensor_all.html">Sensor Information</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Deployed Services
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="sensorDep_all.html">Sensors Deployed</a>
+            <a class="dropdown-item" href="turbineDep_all.html">Turbines Deployed</a>
+          </div>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="login.html">Login&nbsp;<i class="fas fa-user"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <main class= "row">
+
+      <table class="table table-responsive table-striped table-bordered table-hover" id="clientTable">
+        <thead>
+          <tr>
+            <th>Turbine Deployed ID</th>
+            <th>Turbine ID</th>
+            <th>
+              Site ID
+            </th>
+            <th>
+              Serial Number
+            </th>
+            <th>Deployed Date</th>
+            <th>Total Fired Hours</th>
+            <th>Total Starts</th>
+            <th>Last Planned Outage Date</th>
+            <th>Last Unplanned Outage Date</th>
+          </tr>
+        </thead>
+        <tbody v-for="c in turbineDeployed"
+        :key="c.turbineDeployedId"
+        :id="'turbineDeployed-' + c.turbineDeployedId">
+          <td>{{c.turbineDeployedId}}</td>
+          <td>{{c.turbineId}}</td>
+          <td>{{c.siteId}}</td>
+          <td>{{c.serialNumber}}</td>
+          <td>{{c.deployedDate}}</td>
+          <td>{{c.totalFiredHours}}</td>
+          <td>{{c.totalStarts}}</td>
+          <td>{{c.lastPlannedOutageDate}}</td>
+          <td>{{c.lastUnplannedOutageDate}}</td>
+        </tbody>
+
+      </table>
+
+    </main>
+
+<footer class = "row">
+    <div class="col-xs-12 col-md-6">
+        <p>Alternative Green Systems<br>
+          877.686.9448<br />
+        </p>
+    </div>
+    <div class="col-xs-12 col-md-6 pull-right">
+        <p style="font-size: 12px; ">© 2018 Green Alternative Systems. All rights reserved.<br>
+        Follow us on&nbsp;<i class="fab fa-facebook"></i>&nbsp;<i class="fab fa-twitter-square"></i>&nbsp;<i class="fab fa-instagram"></i>&nbsp;<i class="fab fa-snapchat-square"></i></p>
+    </div>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src='js/turbineDep_all.js'></script>
+</body>
+</html>
