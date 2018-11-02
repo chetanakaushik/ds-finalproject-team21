@@ -85,7 +85,7 @@ insert into SensorsDeployed values (4,3,1,"BN350300-IU0001","2016-02-14");
     createdDate varchar(100),
       CONSTRAINT FK_note1 FOREIGN KEY (clientId)
         REFERENCES Client(clientID));
-insert into ClientNotes values (1, 1, "SLA agreement", "This is the first note for Hoosier Energy",
+insert into ClientNotes values (1, 2, "SLA agreement", "This is the first note for Hoosier Energy",
 "2018/09/29");
 
 create Table sensorTimeSeries (timeSeriesId INT PRIMARY KEY AUTO_INCREMENT NOT NULL, sensorDeployedId int not null ,
